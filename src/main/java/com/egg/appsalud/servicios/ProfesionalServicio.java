@@ -49,6 +49,9 @@ public class ProfesionalServicio implements UserDetailsService {
 
     @Autowired
     private ConsultaRepositorio consultaRepositorio;
+    
+    @Autowired
+    private DireccionesServicio direccionesServicio;
 
 
     @Transactional
@@ -80,9 +83,11 @@ public class ProfesionalServicio implements UserDetailsService {
         profesional.setPrecioConsulta(precioConsulta);
 
         profesional.setActivo(true);
-        profesional.setProvincias(provincias);
-        profesional.setLocalidad(localidad);
-        profesional.setDireccion(direccion);
+        
+        Direcciones direction = new Direcciones(provincias, localidad, direccion);
+        
+        profesional.setDireccion(direction);
+        
         profesional.setImagen(imagen);
 
 
@@ -115,10 +120,12 @@ public class ProfesionalServicio implements UserDetailsService {
             profesional.setNombreUsuario(nombreUsuario);
             profesional.setMatricula(matricula);
             profesional.setEspecialidad(especialidad);
+            
+            String idDireccion = profesional.getDireccion().getId();
+            
+            Direcciones direcciones = direccionesServicio.modificarDirecciones(id, provincias, localidad, direccion);
 
-            profesional.setProvincias(provincias);
-            profesional.setLocalidad(localidad);
-            profesional.setDireccion(direccion);
+            profesional.setDireccion(direcciones);
 
             profesional.setPrecioConsulta(precioConsulta);
 

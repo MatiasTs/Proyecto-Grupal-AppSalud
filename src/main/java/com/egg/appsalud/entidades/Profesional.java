@@ -38,11 +38,7 @@ public class Profesional extends Usuario {
     @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
     
-    @Enumerated(EnumType.STRING)
-    private Provincias provincias;
     
-    private String localidad;
-    private String direccion;
 
 
     @ElementCollection
@@ -75,6 +71,10 @@ public class Profesional extends Usuario {
 
     @OneToMany
     private List<FichaMedica> historialConsultas;
+    
+    @OneToOne
+    private Direcciones direccion;
+    
 
 
     public void recibirPuntuacion(Consulta consulta, int puntuacion) {
