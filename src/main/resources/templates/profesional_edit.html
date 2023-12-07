@@ -87,9 +87,9 @@
                 <label for="provincias">Provincia: </label>
                 <select name="provincias" id="provincias" required>
                     <option
-                            th:selected="${profesional != null ? profesional.provincias : session.usuariosession.provincias}"
-                            th:text="${profesional != null ? profesional.provincias : session.usuariosession.provincias}"
-                            th:value="${profesional != null ? profesional.provincias : session.usuariosession.provincias}">
+                            th:selected="${profesional != null ? profesional.direccion.provincias : session.usuariosession.direccion.provincias}"
+                            th:text="${profesional != null ? profesional.direccion.provincias : session.usuariosession.direccion.provincias}"
+                            th:value="${profesional != null ? profesional.direccion.provincias : session.usuariosession.direccion.provincias}">
                     </option>
                     <option
                             th:each="provincia : ${provincias}"
@@ -101,14 +101,14 @@
 
             <div class="col-md-6">
                 <label for="localidad">Localidad: </label><br>
-                <input th:value="${profesional != null ? profesional.localidad : session.usuariosession.localidad}"
+                <input th:value="${profesional != null ? profesional.direccion.localidad : session.usuariosession.direccion.localidad}"
                        type="text" id="localidad" name="localidad" class="form-control"
                        placeholder="Ingrese localidad" required>
             </div>
 
             <div class="col-md-6">
                 <label for="direccion">Dirección: </label>
-                <input th:value="${profesional != null ? profesional.direccion : session.usuariosession.direccion}"
+                <input th:value="${profesional != null ? profesional.direccion.direccion : session.usuariosession.direccion.direccion}"
                        type="text" id="direccion" name="direccion" class="form-control"
                        placeholder="Ej: Calle Necochea 1232 3-A" required>
             </div>
@@ -138,7 +138,7 @@
 
             <div class="col-md-6">
 
-                <img th:if="${session.usuariosession.imagen != null}"
+                 <img th:if="${session.usuariosession.imagen != null}"
                      style="height: 100px;width: 100px; border-radius: 10px; object-fit:cover"
                      class="logo"
                      th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"

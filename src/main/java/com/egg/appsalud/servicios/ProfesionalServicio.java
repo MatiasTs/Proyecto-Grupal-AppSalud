@@ -84,9 +84,9 @@ public class ProfesionalServicio implements UserDetailsService {
 
         profesional.setActivo(true);
         
-        Direcciones direction = new Direcciones(provincias, localidad, direccion);
+        Direcciones direcciones = direccionesServicio.crearDirecciones(provincias, localidad, direccion);
         
-        profesional.setDireccion(direction);
+        profesional.setDireccion(direcciones);
         
         profesional.setImagen(imagen);
 
@@ -100,10 +100,7 @@ public class ProfesionalServicio implements UserDetailsService {
                                      boolean activo, Especialidad especialidad, Provincias provincias, String localidad, String direccion,
                                      Long matricula, int precioConsulta) throws MiException {
 
-        validar(nombreUsuario, password, password2, nombre, apellido, fechaDeNacimiento, DNI, email);
-        validar(nombreUsuario, password, password2, nombre, apellido, fechaDeNacimiento, DNI, email);
-
-
+        
         validar(nombreUsuario, password, password2, nombre, apellido, fechaDeNacimiento, DNI, email, matricula, especialidad, provincias, localidad, direccion);
 
         Optional<Profesional> respuesta = profesionalRepositorio.findById(id);
@@ -124,9 +121,12 @@ public class ProfesionalServicio implements UserDetailsService {
             String idDireccion = profesional.getDireccion().getId();
             
             Direcciones direcciones = direccionesServicio.modificarDirecciones(id, provincias, localidad, direccion);
+            
+            direcciones.setId(idDireccion);
 
             profesional.setDireccion(direcciones);
-
+            
+            
             profesional.setPrecioConsulta(precioConsulta);
 
             Imagen imagen = imagenServicio.guardar(archivo);

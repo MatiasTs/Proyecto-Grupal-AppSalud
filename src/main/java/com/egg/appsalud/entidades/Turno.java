@@ -35,7 +35,7 @@ public class Turno {
     @JoinColumn(name = "paciente")
     private Paciente paciente;
 
-    @OneToOne
+    @ManyToOne
     private Profesional profesional;
 
 }
