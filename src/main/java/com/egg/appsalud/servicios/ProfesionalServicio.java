@@ -120,9 +120,13 @@ public class ProfesionalServicio implements UserDetailsService {
             
             String idDireccion = profesional.getDireccion().getId();
             
-            Direcciones direcciones = direccionesServicio.modificarDirecciones(id, provincias, localidad, direccion);
+            /*System.out.println("**************************************");
+            System.out.println("El id es " + idDireccion);
+            System.out.println("**************************************");*/
             
-            direcciones.setId(idDireccion);
+            Direcciones direcciones = direccionesServicio.modificarDirecciones(idDireccion, provincias, localidad, direccion);
+            
+            //direcciones.setId(idDireccion);
 
             profesional.setDireccion(direcciones);
             
