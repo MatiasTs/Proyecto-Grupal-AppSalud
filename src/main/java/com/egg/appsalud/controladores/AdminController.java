@@ -6,7 +6,9 @@ import com.egg.appsalud.servicios.UsuarioServicio;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +26,18 @@ public class AdminController {
     UsuarioServicio usuarioServicio;
 
     @GetMapping("/dashboard")
-    public String panelAdmin(ModelMap modelo) {
+    public String panelAdmin(@Param("palabra") String palabra, ModelMap modelo) {
 
-        var usuarios = usuarioServicio.listarTodos();
+        //var usuarios = usuarioServicio.listarTodos();
 
+        //modelo.addAttribute("usuarios", usuarios);
+        
+        List<Usuario> usuarios = usuarioServicio.listarUsuario(palabra);
         modelo.addAttribute("usuarios", usuarios);
+
+        
+
+        modelo.addAttribute("palabra", palabra);
 
         return "dashboard";
     }
