@@ -23,7 +23,7 @@
 
                 <div class="form-group mx-sm-3 mb-2 ">
                     <input type="submit" class="btn btn-info mb-2 mr-1 d-inline" value="Buscar">
-                    <input type="text" name="palabra" class="form-control w-25 d-inline" id="palabra" th:value=${palabra} placeholder="Ingrese nombre a buscar">
+                    <input type="text" name="palabra" class="form-control w-25 d-inline" id="palabra" th:value=${palabra} placeholder="Nombre de usuario a buscar">
                 </div>
 
             </form>
@@ -38,8 +38,9 @@
                                 <th scope="col">Foto</th>
                                 <th scope="col">Id</th>
                                 <th scope="col">Tipo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
+                                <th scope="col">Usuario</th>
+<!--                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>-->
                                 <th scope="col"> Editar</th>
                                 <th scope="col">Activo</th>
 
@@ -59,8 +60,9 @@
                                 </td>
                                 <td th:text="${usuario.id}"></td>
                                 <td th:text="${usuario.rol}"></td>
-                                <td th:text="${usuario.nombre}"></td>
-                                <td th:text="${usuario.apellido}"></td>
+                                <td th:text="${usuario.nombreUsuario}"></td>
+<!--                                <td th:text="${usuario.nombre}"></td>
+                                <td th:text="${usuario.apellido}"></td>-->
                                 <td>
                                     <a th:if="${usuario.rol == T(com.egg.appsalud.Enumeracion.Rol).PROFESIONAL}" th:href="@{/profesional/modificar/__${usuario.id}__}">
                                         <i class="fa fa-user-pen" style="color: #226cec;"></i>
