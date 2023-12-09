@@ -98,23 +98,19 @@
 
             <div class="col-md-6">
                 <label for="localidad">Localidad: </label><br>
-                <input th:value="${profesional.localidad}" type="text" id="localidad" name="localidad"
+                <input th:value="${profesional.direccion.localidad}" type="text" id="localidad" name="localidad"
                        class="form-control"
                        placeholder="Ingrese localidad" required>
             </div>
 
             <div class="col-md-6">
                 <label for="direccion">Dirección: </label>
-                <input th:value="${profesional.direccion}" type="text" id="direccion" name="direccion"
+                <input th:value="${profesional.direccion.direccion}" type="text" id="direccion" name="direccion"
                        class="form-control"
                        placeholder="Ej: Calle Necochea 1232 3-A" required>
             </div>
 
-            <!--            <div class="col-md-6">-->
-            <!--                <label for="horariosAtencion">Horario de Atencion: </label>-->
-            <!--                <input th:value="${profesional.horariosAtencion}" type="text" id="horariosAtencion" name="horariosAtencion" class="form-control"-->
-            <!--                       placeholder="Ej: 9 a 12 - 15 a 18" required>-->
-            <!--            </div>-->
+            
 
             <div class="col-md-6">
                 <label for="precioConsulta">Precio de la consulta: </label>
