@@ -23,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @Slf4j
@@ -95,9 +96,49 @@ public class PacienteControlador {
 
 
     //    MODIFICAR DATOS COMO ADMIN
-    @GetMapping("/modificar/{id}")
+    /*@GetMapping("/modificar/{id}")
     public String modificarPaciente() {
         return "usuarioModificar";
+    }*/
+    
+    @GetMapping("/modificar/{id}")
+    public String modificarProfesional(@PathVariable String id, ModelMap modelo) {
+
+        
+        Paciente paciente = pacienteServicio.getOne(id);
+        modelo.addAttribute(paciente);
+
+        return "paciente_modificar";
+    }
+
+    @PostMapping("/modificar/{id}")
+    public String modificarProfesional(@PathVariable String id, MultipartFile archivo, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
+                                       @RequestParam(required = false) Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam String password, @RequestParam String password2,
+                                       @RequestParam String direccion, ModelMap modelo) {
+
+        Date fechaDeNacimiento;
+
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            fechaDeNacimiento = dateFormat.parse(fechaDeNacimientoStr);
+
+        } catch (ParseException p) {
+            modelo.put("error", "la fecha no puede venir vacía");
+            return "redirect:/paciente/modificar/{id}";
+        }
+
+        try {
+
+            pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
+            modelo.put("exito", "Profesional modificado con exito");
+
+        } catch (MiException ex) {
+
+            modelo.put("error", ex.getMessage());
+            return "redirect:/paciente/{id}";
+
+        }
+        return "dashboard.html";
     }
 
 }
