@@ -56,9 +56,16 @@
                                     <a th:if="${usuario.rol == T(com.egg.appsalud.Enumeracion.Rol).PROFESIONAL}" th:href="@{/profesional/modificar/__${usuario.id}__}">
                                         <i class="fa fa-user-pen" style="color: #226cec;"></i>
                                     </a>
-                                    <a th:unless="${usuario != null and usuario.rol == T(com.egg.appsalud.Enumeracion.Rol).PROFESIONAL}" th:href="@{/paciente/modificar/__${usuario.id}__}">
+                                    <a th:if="${usuario.rol == T(com.egg.appsalud.Enumeracion.Rol).PACIENTE}" th:href="@{/paciente/modificar/__${usuario.id}__}">
                                         <i class="fa fa-user-pen" style="color: #226cec;"></i>
                                     </a>
+                                    
+                                    <a th:if="${usuario.rol == T(com.egg.appsalud.Enumeracion.Rol).ADMIN}" th:href="@{/admin/modificar/__${usuario.id}__}">
+                                        <i class="fa fa-user-pen" style="color: #226cec;"></i>
+                                    </a>
+                                    <!--<a th:unless="${usuario != null and usuario.rol == T(com.egg.appsalud.Enumeracion.Rol).PROFESIONAL}" th:href="@{/paciente/modificar/__${usuario.id}__}">
+                                        <i class="fa fa-user-pen" style="color: #226cec;"></i> 
+                                    </a>-->
 
 
                                 </td>

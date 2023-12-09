@@ -102,7 +102,7 @@ public class PacienteControlador {
     }*/
     
     @GetMapping("/modificar/{id}")
-    public String modificarProfesional(@PathVariable String id, ModelMap modelo) {
+    public String modificarPaciente(@PathVariable String id, ModelMap modelo) {
 
         
         Paciente paciente = pacienteServicio.getOne(id);
@@ -112,7 +112,7 @@ public class PacienteControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificarProfesional(@PathVariable String id, MultipartFile archivo, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
+    public String modificarPaciente(@PathVariable String id, MultipartFile archivo, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
                                        @RequestParam(required = false) Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam String password, @RequestParam String password2,
                                        @RequestParam String direccion, ModelMap modelo) {
 
