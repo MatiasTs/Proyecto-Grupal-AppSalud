@@ -50,6 +50,7 @@ public class ProfesionalControlador {
     @Autowired
     PacienteRepositorio pacienteRepositorio;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/modificar/{id}")
     public String modificarProfesional(@PathVariable String id, ModelMap modelo) {
 
@@ -63,6 +64,7 @@ public class ProfesionalControlador {
         return "profesional_modificar";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/modificar/{id}")
     public String modificarProfesional(@PathVariable String id, MultipartFile archivo, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
                                        @RequestParam(required = false) Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam String password, @RequestParam String password2,
