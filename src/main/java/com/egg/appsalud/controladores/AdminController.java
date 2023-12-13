@@ -49,10 +49,6 @@ public class AdminController {
         Usuario admin = usuarioServicio.getOne(id);
         modelo.addAttribute("admin", admin);
         
-        System.out.println("********************************");
-        
-        System.out.println("ADMINNNNNNNNNNN" + admin);
-        System.out.println("********************************");
         
 
         return "admin_modificar";

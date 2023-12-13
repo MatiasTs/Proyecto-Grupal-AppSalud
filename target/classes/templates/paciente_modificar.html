@@ -15,14 +15,26 @@
 
 <div class="card">
 
-    <div class="card-header">
-        <h1>
-            Datos personales
+  
+        <h1 class="m-4">
+            Modificar paciente
         </h1>
-        <p>Recuerda mantener tus datos actualizados!</p>
-    </div>
 
     <div class="card-body">
+        
+        <div class="form-floating">
+            <p th:if="${paciente.activo}">ACTIVO</p>
+            <p style="text-align: center; vertical-align: middle;">
+                <form th:action="@{/usuario/bajaUsuario/{id}(id=${paciente.id})}" method="get" th:if="${paciente.activo}">
+                    <button  class="btn btn-danger " type="submit" value="Baja" >Baja</button>
+                </form>
+                <form th:action="@{/usuario/altaUsuario/{id}(id=${paciente.id})}" method="get" th:if="${not paciente.activo}">
+                    <button class="btn btn-primary" type="submit" value="Alta" >Alta</button>
+                </form>
+            </p>
+        </div>
+        
+        
         <form th:action="@{/paciente/modificar/__${paciente.id}__}" method="POST"
               enctype="multipart/form-data" class="row g-3">
 
