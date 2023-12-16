@@ -85,28 +85,7 @@
 
         </tbody>
     </table>
-    <!-- Modal -->
-    <!--    <div class="modal fade" id="motivoConsultaModal" tabindex="-1" aria-labelledby="motivoConsultaModalLabel"-->
-    <!--         aria-hidden="true">-->
-    <!--        <div class="modal-dialog">-->
-    <!--            <div class="modal-content">-->
-    <!--                <div class="modal-header">-->
-    <!--                    <h5 class="modal-title" id="motivoConsultaModalLabel">Motivo de Consulta</h5>-->
-    <!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-    <!--                </div>-->
-    <!--                <div class="modal-body">-->
-    <!--                    <form id="motivoConsultaForm" th:action="@{/consulta/motivo}" method="POST">-->
-    <!--                        <label for="motivoConsulta">Motivo de Consulta:</label>-->
-    <!--                        <input type="text" class="form-control" id="motivoConsulta" name="motivoConsulta" required>-->
-    <!--                    </form>-->
-    <!--                </div>-->
-    <!--                <div class="modal-footer">-->
-    <!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>-->
-    <!--                    <button type="submit" class="btn btn-primary" id="guardarMotivoConsulta">Confirmar</button>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
+    
 
 
 </div>
@@ -118,23 +97,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"
 ></script>
-<!--<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('guardarMotivoConsulta').addEventListener('click', function () {
-      // Obtener el motivo de consulta desde el formulario del modal
-      var motivoConsulta = document.getElementById('motivoConsulta').value;
-        
-      // Aquí puedes hacer algo con el motivo de consulta, como enviarlo al servidor si es necesario
 
-      // Cerrar el modal
-      var motivoConsultaModal = new bootstrap.Modal(document.getElementById('motivoConsultaModal'));
-      motivoConsultaModal.hide();
-
-      // Redirigir a la página de agendar turno
-      window.location.href = '/paciente/citas';
-    });
-  });
-</script>-->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('guardarMotivoConsulta').addEventListener('click', function () {

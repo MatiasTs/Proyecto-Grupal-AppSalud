@@ -85,8 +85,10 @@
                      class="logo" th:src="@{/images/noImage.webp}">
 
                 <label for="imagen">Foto de perfil</label>
+                <button type="button" class="btn btn-primary ms-3" id="buttonFoto">Cambiar</button>
 
-                <input type="file" id="imagen" name="archivo" class="form-control">
+
+                <input type="file" id="imagenInput" name="archivo"  class="form-control d-none mt-3">
 
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
@@ -101,5 +103,21 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"
 ></script>
+<!--<script>
+    
+    const buttonFoto = document.getElementById("buttonFoto");
+    
+    buttonFoto.addEventListener('click', () => {
+        imagenInput.classList.remove("d-none");
+    })
+    
+</script>-->
+
+<!--<script src="/src/main/resources/static/mostrarInputFile.js"></script>-->
+
+<script src="../mostrarInputFile.js"></script>
+
+<!--<script src="hola.js"></script>-->
+
 </body>
 </html>
