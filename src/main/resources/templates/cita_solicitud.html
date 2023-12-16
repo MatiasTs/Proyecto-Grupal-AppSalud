@@ -41,9 +41,9 @@
                     <p th:text="${profesional.especialidad}"></p>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"> Provincia: <span th:text="${profesional.provincias}"></span></h5>
-                    <p th:text="${profesional.localidad}" class="card-text"></p>
-                    <p th:text="${profesional.direccion}" class="card-text"></p>
+                    <h5 class="card-title"> Provincia: <span th:text="${profesional.direccion.provincias}"></span></h5>
+                    <p th:text="${profesional.direccion.localidad}" class="card-text"></p>
+                    <p th:text="${profesional.direccion.direccion}" class="card-text"></p>
                     <p class="card-text"> Activo desde <span th:text="${profesional.fechaDeAlta}"></span><small
                             class="text-body-secondary"></small></p>
                 </div>
