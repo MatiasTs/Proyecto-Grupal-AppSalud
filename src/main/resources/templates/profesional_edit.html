@@ -147,8 +147,10 @@
                      class="logo" th:src="@{/images/noImage.webp}">
 
                 <label for="imagen">Foto de perfil</label>
+                <button type="button" class="btn btn-primary ms-3" id="buttonFoto">Cambiar</button>
 
-                <input type="file" id="imagen" name="archivo" class="form-control">
+
+                <input type="file" id="imagenInput" name="archivo"  class="form-control d-none mt-3">
 
             </div>
 
@@ -166,5 +168,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"
 ></script>
+<script src="../mostrarInputFile.js"></script>
 </body>
 </html>
