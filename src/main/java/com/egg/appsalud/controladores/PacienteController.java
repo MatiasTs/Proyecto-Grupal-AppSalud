@@ -56,6 +56,13 @@ public class PacienteController {
         }
 
         try {
+            
+            
+            
+            if(archivo.isEmpty()){
+                
+                archivo = null;
+            }
             pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
             modelo.addAttribute("exito", "cambios realizados con éxito");
 

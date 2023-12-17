@@ -85,9 +85,13 @@ public class PacienteServicio {
             paciente.setFechaDeNacimiento(fechaNacimiento);
             paciente.setNombreUsuario(nombreUsuario);
 
-            Imagen imagen = imagenServicio.guardar(archivo);
+            
+            if(archivo!=null){
+                Imagen imagen = imagenServicio.guardar(archivo);
 
-            paciente.setImagen(imagen);
+                paciente.setImagen(imagen);
+            }
+            
 
             pacienteRepositorio.save(paciente);
 

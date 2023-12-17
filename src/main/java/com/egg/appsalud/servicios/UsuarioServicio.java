@@ -87,16 +87,22 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setFechaDeAlta(new Date());
             usuario.setRol(Rol.PACIENTE);
             usuario.setActivo(activo);
+            
+            if(archivo!=null){
+                Imagen imagen = imagenServicio.guardar(archivo);
 
-            String idImagen = null;
-
-            if (usuario.getImagen() != null) {
-                idImagen = usuario.getImagen().getId();
+                usuario.setImagen(imagen);
             }
+
+//            String idImagen = null;
+//
+//            if (usuario.getImagen() != null) {
+//                idImagen = usuario.getImagen().getId();
+//            }
+//            
+//            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
             
-            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-            
-            usuario.setImagen(imagen);
+//            usuario.setImagen(imagen);
             ur.save(usuario);
         }
 

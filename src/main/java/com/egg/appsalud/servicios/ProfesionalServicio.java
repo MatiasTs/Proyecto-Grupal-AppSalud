@@ -133,9 +133,11 @@ public class ProfesionalServicio implements UserDetailsService {
             
             profesional.setPrecioConsulta(precioConsulta);
 
-            Imagen imagen = imagenServicio.guardar(archivo);
+            if(archivo!=null){
+                Imagen imagen = imagenServicio.guardar(archivo);
 
-            profesional.setImagen(imagen);
+                profesional.setImagen(imagen);
+            }
 
             profesionalRepositorio.save(profesional);
 

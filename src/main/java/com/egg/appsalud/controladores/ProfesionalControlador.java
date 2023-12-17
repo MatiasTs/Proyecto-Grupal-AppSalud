@@ -82,6 +82,11 @@ public class ProfesionalControlador {
         }
 
         try {
+            
+            if(archivo.isEmpty()){
+                
+                archivo = null;
+            }
 
             profesionalServicio.modificarProfesional(id, archivo, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2, true, especialidad, provincias, localidad, direccion, matricula, precioConsulta);
             modelo.put("exito", "Profesional modificado con exito");

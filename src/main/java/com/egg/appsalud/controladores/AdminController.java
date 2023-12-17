@@ -71,6 +71,11 @@ public class AdminController {
         }
 
         try {
+            
+            if(archivo.isEmpty()){
+                
+                archivo = null;
+            }
 
             usuarioServicio.modificarUsuario(id, archivo, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2, true);
             modelo.put("exito", "Profesional modificado con exito");

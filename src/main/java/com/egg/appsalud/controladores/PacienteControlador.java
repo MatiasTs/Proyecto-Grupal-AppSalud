@@ -132,6 +132,11 @@ public class PacienteControlador {
         }
 
         try {
+            
+            if(archivo.isEmpty()){
+                
+                archivo = null;
+            }
 
             pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
             modelo.put("exito", "Profesional modificado con exito");
