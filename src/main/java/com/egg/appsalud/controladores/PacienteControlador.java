@@ -108,7 +108,7 @@ public class PacienteControlador {
 
         
         Paciente paciente = pacienteServicio.getOne(id);
-        modelo.addAttribute(paciente);
+        modelo.addAttribute("paciente", paciente);
 
         return "paciente_modificar";
     }
@@ -128,7 +128,8 @@ public class PacienteControlador {
 
         } catch (ParseException p) {
             modelo.put("error", "la fecha no puede venir vacía");
-            return "redirect:/paciente/modificar/{id}";
+            
+            return "index.html";
         }
 
         try {
@@ -140,11 +141,15 @@ public class PacienteControlador {
 
             pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
             modelo.put("exito", "Profesional modificado con exito");
+            
+            System.out.println("**********************************************************************");
+            System.out.println("Error en modificar paciente");
+            System.out.println("**********************************************************************");
 
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
-            return "redirect:/paciente/{id}";
+            return "index.html";
 
         }
         return "dashboard.html";

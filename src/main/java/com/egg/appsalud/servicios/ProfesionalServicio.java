@@ -112,7 +112,6 @@ public class ProfesionalServicio implements UserDetailsService {
             profesional.setApellido(apellido);
             profesional.setFechaDeNacimiento(fechaDeNacimiento);
             profesional.setEmail(email);
-            profesional.setFechaDeAlta(new Date());
             profesional.setActivo(activo);
             profesional.setNombreUsuario(nombreUsuario);
             profesional.setMatricula(matricula);

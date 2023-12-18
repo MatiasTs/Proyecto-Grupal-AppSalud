@@ -42,13 +42,13 @@
             <input hidden th:value="${paciente.id}" name="id">
             <div class="col-md-6">
                 <label for="nombre">Nombre</label>
-                <input th:value="${paciente.nombre}" type="text"
-                       id="nombre" class="form-control" name="nombre">
+<!--                <input th:value="${paciente.nombre}" type="text"
+                       id="nombre" class="form-control" name="nombre" required="true">-->
             </div>
             <div class="col-md-6">
                 <label for="apellido">Apellido</label><br>
                 <input th:value="${paciente.apellido}" type="text"
-                       id="apellido" class="form-control" name="apellido">
+                       id="apellido" class="form-control" name="apellido" required="true">
             </div>
             <div class="col-md-6">
                 <label for="dni">Número de DNI</label><br>
@@ -68,21 +68,21 @@
                 <label>Correo electrónico</label><br>
                 <div>
                     <input type="email" class="form-control" name="email"
-                           th:value="${paciente.email}">
+                           th:value="${paciente.email}" required="true">
                 </div>
             </div>
             <div class="col-md-6">
                 <label>Nombre de usuario</label>
                 <input type="text" class="form-control" name="nombreUsuario"
-                       th:value="${paciente.nombreUsuario}">
+                       th:value="${paciente.nombreUsuario}" required="true">
             </div>
             <div class="col-md-6">
                 <label>Contraseña</label>
-                <input type="password" name="password" class="form-control" placeholder="Ingrese su contraseña">
+                <input type="password" name="password" class="form-control" placeholder="Ingrese su contraseña" required="true">
             </div>
             <div class="col-md-6">
                 <label>Reingresar contraseña</label>
-                <input type="password" name="password2" class="form-control"
+                <input type="password" name="password2" class="form-control" required="true"
                        placeholder="Ingrese nuevamente su contraseña">
             </div>
 

@@ -80,7 +80,7 @@ public class PacienteServicio {
 
             paciente.setNombre(nombre);
             paciente.setApellido(apellido);
-            new BCryptPasswordEncoder().encode(password);
+            paciente.setPassword(new BCryptPasswordEncoder().encode(password));
             paciente.setEmail(email);
             paciente.setFechaDeNacimiento(fechaNacimiento);
             paciente.setNombreUsuario(nombreUsuario);

@@ -77,21 +77,29 @@ public class UsuarioServicio implements UserDetailsService {
         Optional<Usuario> respuesta = ur.findById(id);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
-            usuario.setNombre(nombre);
             usuario.setPassword(new BCryptPasswordEncoder().encode(password));
             usuario.setDNI(DNI);
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
             usuario.setFechaDeNacimiento(fechaDeNacimiento);
             usuario.setEmail(email);
-            usuario.setFechaDeAlta(new Date());
-            usuario.setRol(Rol.PACIENTE);
             usuario.setActivo(activo);
             
             if(archivo!=null){
                 Imagen imagen = imagenServicio.guardar(archivo);
-
+//
                 usuario.setImagen(imagen);
+
+//                String idImagen = null;
+//
+//                if (usuario.getImagen() != null) {
+//                    idImagen = usuario.getImagen().getId();
+//                }
+////            
+//                Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+//            
+//                usuario.setImagen(imagen);
+
             }
 
 //            String idImagen = null;
