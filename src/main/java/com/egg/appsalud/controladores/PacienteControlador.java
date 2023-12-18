@@ -118,7 +118,7 @@ public class PacienteControlador {
     @PostMapping("/modificar/{id}")
     public String modificarPaciente(@PathVariable String id, MultipartFile archivo, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
                                        @RequestParam(required = false) Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-                                       @RequestParam String direccion, ModelMap modelo) {
+                                        ModelMap modelo) {
 
         Date fechaDeNacimiento;
 
@@ -140,11 +140,9 @@ public class PacienteControlador {
             }
 
             pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
-            modelo.put("exito", "Profesional modificado con exito");
+            modelo.put("exito", "Paciente modificado con exito");
             
-            System.out.println("**********************************************************************");
-            System.out.println("Error en modificar paciente");
-            System.out.println("**********************************************************************");
+            
 
         } catch (MiException ex) {
 
@@ -152,7 +150,7 @@ public class PacienteControlador {
             return "index.html";
 
         }
-        return "dashboard.html";
+        return "redirect:/admin/dashboard";
     }
 
 }
