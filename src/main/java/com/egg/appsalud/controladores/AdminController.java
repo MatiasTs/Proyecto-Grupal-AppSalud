@@ -60,7 +60,7 @@ public class AdminController {
     @PostMapping("/modificar/{id}")
     public String modificarAdmin(@PathVariable String id, MultipartFile archivo, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
                                        @RequestParam(required = false) Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-                                       @RequestParam String direccion, ModelMap modelo) {
+                                       ModelMap modelo) {
 
         Date fechaDeNacimiento;
 
@@ -89,6 +89,7 @@ public class AdminController {
             return "redirect:/admin/{id}";
 
         }
-        return "dashboard.html";
+        return "redirect:/admin/dashboard";
+       
     }
 }
