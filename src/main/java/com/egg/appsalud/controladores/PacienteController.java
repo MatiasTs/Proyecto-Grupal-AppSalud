@@ -41,8 +41,8 @@ public class PacienteController {
 
     @PostMapping("/editar/{id}")
     public String editarPaciente(@PathVariable String id, @RequestParam String nombreUsuario, @RequestParam String nombre, @RequestParam String apellido,
-                                 @RequestParam Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam String password,
-                                 @RequestParam String password2,
+                                 @RequestParam Long DNI, @RequestParam("fechaDeNacimiento") String fechaDeNacimientoStr, @RequestParam String email, @RequestParam(required = false) String password,
+                                 @RequestParam(required = false) String password2, @RequestParam(required = false) String actualPassword,
                                  MultipartFile archivo, ModelMap modelo, HttpSession session) {
 
         Date fechaDeNacimiento;
@@ -63,7 +63,7 @@ public class PacienteController {
                 
                 archivo = null;
             }
-            pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
+            pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2, actualPassword);
             modelo.addAttribute("exito", "cambios realizados con éxito");
 
             Paciente pacienteActualizado = pacienteServicio.getOne(id);
@@ -71,6 +71,9 @@ public class PacienteController {
 
         } catch (MiException e) {
             modelo.put("error", e.getMessage());
+            System.out.println("**********************************************");
+            System.out.println("Ocurrió un error al modificaar paciente" + e.getMessage());
+            System.out.println("**********************************************");
             return "redirect:/paciente/editar";
         }
         return "redirect:/";

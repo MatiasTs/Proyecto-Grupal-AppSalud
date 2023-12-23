@@ -139,7 +139,7 @@ public class PacienteControlador {
                 archivo = null;
             }
 
-            pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2);
+            pacienteServicio.modificarPacientes(archivo, id, nombreUsuario, nombre, apellido, DNI, fechaDeNacimiento, email, password, password2, null);
             modelo.put("exito", "Paciente modificado con exito");
             
             
