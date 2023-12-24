@@ -133,3 +133,8 @@ nav {
 .imagePassword:hover{
     cursor: pointer;
 }
+
+.masPequenia{
+    width: 30px !important;
+    right: 4px !important;
+}
