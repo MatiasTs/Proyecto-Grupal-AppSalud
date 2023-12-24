@@ -36,10 +36,10 @@ public class ProfesionalController {
         Especialidad[] especialidades = Especialidad.values();
         modelo.addAttribute("especialidades", especialidades);
 
-        Profesional profesionalActualizado = (Profesional) session.getAttribute("profesionalActualizado");
-        session.removeAttribute("profesionalActualizado");
+        //Profesional profesionalActualizado = (Profesional) session.getAttribute("profesionalActualizado");
+        //session.removeAttribute("profesionalActualizado");
         modelo.addAttribute("provincias", Provincias.values());
-        modelo.addAttribute("profesional", profesionalActualizado);
+        //session.setAttribute("profesional", profesionalActualizado);
 
         return "profesional_edit";
     }

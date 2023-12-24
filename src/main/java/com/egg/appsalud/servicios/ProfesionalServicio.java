@@ -139,6 +139,19 @@ public class ProfesionalServicio implements UserDetailsService {
             }
 
             profesionalRepositorio.save(profesional);
+            
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(false); // Obtener la sesión sin crear una nueva si no existe
+
+            if (session != null) {
+                // Obtener el profesional actual de la sesión
+                Profesional profesionalEnSesion = (Profesional) session.getAttribute("usuariosession");
+
+                // Actualizar la información del profesional en la sesión
+                if (profesionalEnSesion != null && profesionalEnSesion.getId() == profesional.getId()) {
+                    session.setAttribute("usuariosession", profesional);
+                }
+            }
 
         }
 

@@ -31,36 +31,36 @@
             <input hidden th:value="${session.usuariosession.id}" name="id">
             <div class="col-md-6">
                 <label for="nombre">Nombre</label>
-                <input th:value="${profesional != null ? profesional.nombre : session.usuariosession.nombre}"
+                <input th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.nombre : session.usuariosession.nombre}"
                        type="text" id="nombre" class="form-control" name="nombre">
             </div>
             <div class="col-md-6">
                 <label for="apellido">Apellido</label><br>
-                <input th:value="${profesional != null ? profesional.apellido : session.usuariosession.apellido}"
+                <input th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.apellido : session.usuariosession.apellido}"
                        type="text" id="apellido" class="form-control" name="apellido">
             </div>
             <div class="col-md-6">
                 <label for="dni">Número de DNI</label><br>
                 <input type="text" class="form-control" id="dni" name="DNI"
-                       th:value="${profesional != null ? profesional.DNI : session.usuariosession.DNI}">
+                       th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.DNI : session.usuariosession.DNI}">
             </div>
             <div class="col-md-6">
                 <label>Fecha de Nacimiento</label><br>
                 <input type="date" class="form-control" name="fechaDeNacimiento"
-                       th:value="${profesional != null ? #dates.format(profesional.fechaDeNacimiento, 'yyyy-MM-dd') : #dates.format(session.usuariosession.fechaDeNacimiento, 'yyyy-MM-dd')}">
+                       th:value="${session.profesionalActualizado != null ? #dates.format(session.profesionalActualizado.fechaDeNacimiento, 'yyyy-MM-dd') : #dates.format(session.usuariosession.fechaDeNacimiento, 'yyyy-MM-dd')}">
             </div>
             <div class="col-md-6">
                 <label>Correo electrónico</label>
                 <div>
                     <input type="email" class="form-control" name="email"
-                           th:value="${profesional != null ? profesional.email : session.usuariosession.email}">
+                           th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.email : session.usuariosession.email}">
                 </div>
             </div>
             <div class="col-md-6">
                 <label>Nombre de usuario</label>
                 <div>
                     <input type="text" class="form-control" name="nombreUsuario"
-                           th:value="${profesional != null ? profesional.nombreUsuario : session.usuariosession.nombreUsuario}">
+                           th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.nombreUsuario : session.usuariosession.nombreUsuario}">
                 </div>
             </div>
             <div class="col-md-6">
@@ -79,7 +79,7 @@
             <div class="col-md-6">
                 <label for="matricula">Matrícula</label><br>
                 <input type="text" id="matricula" class="form-control" name="matricula"
-                       th:value="${profesional != null ? profesional.matricula : session.usuariosession.matricula}">
+                       th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.matricula : session.usuariosession.matricula}">
             </div>
 
 
@@ -87,9 +87,9 @@
                 <label for="provincias">Provincia: </label>
                 <select name="provincias" id="provincias" required>
                     <option
-                            th:selected="${profesional != null ? profesional.direccion.provincias : session.usuariosession.direccion.provincias}"
-                            th:text="${profesional != null ? profesional.direccion.provincias : session.usuariosession.direccion.provincias}"
-                            th:value="${profesional != null ? profesional.direccion.provincias : session.usuariosession.direccion.provincias}">
+                            th:selected="${session.profesionalActualizado != null ? session.profesionalActualizado.direccion.provincias : session.usuariosession.direccion.provincias}"
+                            th:text="${session.profesionalActualizado != null ? session.profesionalActualizado.direccion.provincias : session.usuariosession.direccion.provincias}"
+                            th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.direccion.provincias : session.usuariosession.direccion.provincias}">
                     </option>
                     <option
                             th:each="provincia : ${provincias}"
@@ -101,21 +101,21 @@
 
             <div class="col-md-6">
                 <label for="localidad">Localidad: </label><br>
-                <input th:value="${profesional != null ? profesional.direccion.localidad : session.usuariosession.direccion.localidad}"
+                <input th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.direccion.localidad : session.usuariosession.direccion.localidad}"
                        type="text" id="localidad" name="localidad" class="form-control"
                        placeholder="Ingrese localidad" required>
             </div>
 
             <div class="col-md-6">
                 <label for="direccion">Dirección: </label>
-                <input th:value="${profesional != null ? profesional.direccion.direccion : session.usuariosession.direccion.direccion}"
+                <input th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.direccion.direccion : session.usuariosession.direccion.direccion}"
                        type="text" id="direccion" name="direccion" class="form-control"
                        placeholder="Ej: Calle Necochea 1232 3-A" required>
             </div>
 
             <div class="col-md-6">
                 <label for="precioConsulta">Precio de la consulta: </label>
-                <input th:value="${profesional != null ? profesional.precioConsulta : session.usuariosession.precioConsulta}"
+                <input th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.precioConsulta : session.usuariosession.precioConsulta}"
                        type="number" id="precioConsulta" name="precioConsulta" class="form-control"
                        placeholder="Ingrese el valor de la consulta" required>
             </div>
@@ -125,9 +125,9 @@
                 <label for="especialidad">Especialidad médica:</label><br>
                 <select name="especialidad" id="especialidad" required>
                     <option
-                            th:selected="${profesional != null ? profesional.especialidad : session.usuariosession.especialidad}"
-                            th:text="${profesional != null ? profesional.especialidad : session.usuariosession.especialidad}"
-                            th:value="${profesional != null ? profesional.especialidad : session.usuariosession.especialidad}"></option>
+                            th:selected="${session.profesionalActualizado != null ? session.profesionalActualizado.especialidad : session.usuariosession.especialidad}"
+                            th:text="${session.profesionalActualizado != null ? session.profesionalActualizado.especialidad : session.usuariosession.especialidad}"
+                            th:value="${session.profesionalActualizado != null ? session.profesionalActualizado.especialidad : session.usuariosession.especialidad}"></option>
                     <option th:each="especialidad : ${especialidades}"
                             th:value="${especialidad}"
                             th:text="${especialidad}">
