@@ -30,11 +30,8 @@ public class PacienteController {
 
     //    MODIFICAR DATOS COMO PACIENTE
     @GetMapping("/editar")
-    public String editarPaciente(ModelMap modelo, HttpSession session) {
+    public String editarPaciente(ModelMap modelo) {
 
-        Paciente pacienteActualizado = (Paciente) session.getAttribute("pacienteActualizado");
-        session.removeAttribute("pacienteActualizado");
-        modelo.addAttribute("paciente", pacienteActualizado);
 
         return "paciente_edit";
     }
