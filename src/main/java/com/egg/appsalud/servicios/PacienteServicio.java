@@ -95,9 +95,7 @@ public class PacienteServicio {
             }
             
             if(!actualPassword.isEmpty() && actualPassword != null){
-                System.out.println("**********************************************");
-                System.out.println("La contraseña actual es " + paciente.getPassword());
-                System.out.println("**********************************************");
+                
                 utilServicio.validarPassword(paciente, actualPassword, password, password2);
                 paciente.setPassword(new BCryptPasswordEncoder().encode(password));
             }

@@ -1,7 +1,6 @@
 package com.egg.appsalud.servicios;
 
 import com.egg.appsalud.Exception.MiException;
-import com.egg.appsalud.entidades.Paciente;
 import com.egg.appsalud.entidades.Usuario;
 import org.springframework.stereotype.Service;
 

@@ -52,6 +52,9 @@ public class ProfesionalServicio implements UserDetailsService {
     
     @Autowired
     private DireccionesServicio direccionesServicio;
+    
+    @Autowired
+    private UtilServicio utilServicio;
 
 
     @Transactional
@@ -59,8 +62,11 @@ public class ProfesionalServicio implements UserDetailsService {
                                  String email, Date fechaNacimiento, Long DNI, Especialidad especialidad, Provincias provincias, String localidad, String direccion,
                                  Long matricula, List<DiaSemana> diasDisponibles, LocalTime horarioEntrada, LocalTime horarioSalida, Integer precioConsulta) throws MiException {
 
-        validar(nombreUsuario, password, password2, nombre, apellido, fechaNacimiento, DNI, email, matricula, especialidad, provincias, localidad, direccion);
+ 
+        utilServicio.validarUsuario(nombreUsuario, nombre, apellido, fechaNacimiento, DNI, email);
 
+        validarDatosProfesional(matricula, especialidad, provincias, localidad, direccion);
+        
         Profesional profesional = new Profesional();
 
         profesional.setNombre(nombre);
@@ -98,16 +104,18 @@ public class ProfesionalServicio implements UserDetailsService {
     public void modificarProfesional(String id, MultipartFile archivo, String nombreUsuario, String nombre, String apellido,
                                      Long DNI, Date fechaDeNacimiento, String email, String password, String password2,
                                      boolean activo, Especialidad especialidad, Provincias provincias, String localidad, String direccion,
-                                     Long matricula, int precioConsulta) throws MiException {
-
+                                     Long matricula, int precioConsulta, String actualPassword) throws MiException {
         
-        validar(nombreUsuario, password, password2, nombre, apellido, fechaDeNacimiento, DNI, email, matricula, especialidad, provincias, localidad, direccion);
+        
+        utilServicio.validarUsuario(nombreUsuario, nombre, apellido, fechaDeNacimiento, DNI, email);
 
+        validarDatosProfesional(matricula, especialidad, provincias, localidad, direccion);
+        
         Optional<Profesional> respuesta = profesionalRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Profesional profesional = respuesta.get();
             profesional.setNombre(nombre);
-            profesional.setPassword(new BCryptPasswordEncoder().encode(password));
+            
             profesional.setDNI(DNI);
             profesional.setApellido(apellido);
             profesional.setFechaDeNacimiento(fechaDeNacimiento);
@@ -119,14 +127,9 @@ public class ProfesionalServicio implements UserDetailsService {
             
             String idDireccion = profesional.getDireccion().getId();
             
-            /*System.out.println("**************************************");
-            System.out.println("El id es " + idDireccion);
-            System.out.println("**************************************");*/
             
             Direcciones direcciones = direccionesServicio.modificarDirecciones(idDireccion, provincias, localidad, direccion);
             
-            //direcciones.setId(idDireccion);
-
             profesional.setDireccion(direcciones);
             
             
@@ -137,55 +140,34 @@ public class ProfesionalServicio implements UserDetailsService {
 
                 profesional.setImagen(imagen);
             }
+            
+            if(!actualPassword.isEmpty() && actualPassword != null){
+                
+                utilServicio.validarPassword(profesional, actualPassword, password, password2);
+                profesional.setPassword(new BCryptPasswordEncoder().encode(password));
+            }
 
             profesionalRepositorio.save(profesional);
             
-            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            HttpSession session = attr.getRequest().getSession(false); // Obtener la sesión sin crear una nueva si no existe
-
-            if (session != null) {
-                // Obtener el profesional actual de la sesión
-                Profesional profesionalEnSesion = (Profesional) session.getAttribute("usuariosession");
-
-                // Actualizar la información del profesional en la sesión
-                if (profesionalEnSesion != null && profesionalEnSesion.getId() == profesional.getId()) {
-                    session.setAttribute("usuariosession", profesional);
-                }
-            }
+//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+//            HttpSession session = attr.getRequest().getSession(false); // Obtener la sesión sin crear una nueva si no existe
+//
+//            if (session != null) {
+//                // Obtener el profesional actual de la sesión
+//                Profesional profesionalEnSesion = (Profesional) session.getAttribute("usuariosession");
+//
+//                // Actualizar la información del profesional en la sesión
+//                if (profesionalEnSesion != null && profesionalEnSesion.getId() == profesional.getId()) {
+//                    session.setAttribute("usuariosession", profesional);
+//                }
+//            }
 
         }
 
     }
 
-    private void validar(String nombreUsuario, String password, String password2, String nombre, String apellido, Date fechaDeNacimiento, Long DNI,
-                         String email, Long matricula, Especialidad especialidad, Provincias provincias, String localidad, String direccion) throws MiException {
-
-
-        if (nombreUsuario.isEmpty() || nombreUsuario == null) {
-            throw new MiException("El nombre de usuario no puede estar vacio o Nulo");
-
-        }
-
-
-        if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("El nombre no puede estar vacío o ser nulo");
-        }
-
-        if (apellido.isEmpty() || apellido == null) {
-            throw new MiException("El apellido no puede estar vacío o ser nulo");
-        }
-
-        if (DNI == null) {
-            throw new MiException("El DNI no puede ser nulo");
-        }
-
-        if (fechaDeNacimiento == null) {
-            throw new MiException("La fecha de nacimiento no puede ser nula");
-        }
-
-        if (email.isEmpty() || email == null) {
-            throw new MiException("El email no puede estar vacío o ser nulo");
-        }
+    private void validarDatosProfesional(Long matricula, Especialidad especialidad, Provincias provincias, String localidad, String direccion) throws MiException {
+        
 
         if (especialidad == null) {
             throw new MiException("La especialidad no puede ser nula");
@@ -207,13 +189,7 @@ public class ProfesionalServicio implements UserDetailsService {
             throw new MiException("La matrícula no puede ser nula");
         }
 
-        if (password.length() <= 5) {
-            throw new MiException("Las contraseñas no pueden estar vacias y tener menos de 5 caracteres ");
-        }
-
-        if (!password.equals(password2)) {
-            throw new MiException("las contraseñas deben coincidir");
-        }
+        
 
 
     }
