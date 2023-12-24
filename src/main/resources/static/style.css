@@ -118,3 +118,18 @@ nav {
     font-size: 24px; /* Ajusta el tamaño del texto según tus preferencias */
     color: #005eff; /* Cambia el color del texto a negro */
 }
+
+.divPassword{
+    position: relative;
+}
+
+.imagePassword{
+    position: absolute;
+    width: 35px;
+    right: 2px;
+    top: 3px;
+}
+
+.imagePassword:hover{
+    cursor: pointer;
+}
