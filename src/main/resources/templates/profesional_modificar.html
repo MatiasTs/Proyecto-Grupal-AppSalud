@@ -71,15 +71,22 @@
                        name="nombreUsuario" required="true">
             </div>
             <div class="col-md-6">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" class="form-control"
-                       placeholder="Ingrese su contraseña" required="true">
+                    <label>Contraseña</label>
+                    <div class="divPassword">
+                <input type="password" class="form-control" name="password" id="password"
+                   placeholder="Ingresa tu contraseña">
+                    <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword"/>
             </div>
-            <div class="col-md-6">
-                <label for="password2">Reingresar contraseña</label>
-                <input type="password" name="password2" id="password2" class="form-control"
-                       placeholder="Ingrese nuevamente su contraseña" required="true">
+                </div>
+
+                <div class="col-md-6">
+                    <label>Contraseña</label>
+                    <div class="divPassword">
+                <input type="password" class="form-control" name="password" id="password2"
+                   placeholder="Ingresa tu contraseña">
+                    <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword2"/>
             </div>
+                </div>
             <div class="col-md-6">
                 <label for="matricula">Matrícula</label>
                 <input th:value="${profesional.matricula}" type="text" id="matricula" class="form-control"
@@ -162,5 +169,6 @@
         crossorigin="anonymous"
 ></script>
 <script src="/mostrarInputFile.js"></script>
+<script src="/vistaPassword.js"></script>
 </body>
 </html>
