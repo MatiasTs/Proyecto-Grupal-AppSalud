@@ -123,14 +123,14 @@ nav {
     position: relative;
 }
 
-.imagePassword{
+.imagePassword, .imagePassword2{
     position: absolute;
     width: 35px;
     right: 2px;
     top: 3px;
 }
 
-.imagePassword:hover{
+.imagePassword:hover, .imagePassword2:hover{
     cursor: pointer;
 }
 
