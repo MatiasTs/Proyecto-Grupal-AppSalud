@@ -102,14 +102,21 @@
                 
                 
                 
-            <div class="col-md-6 d-none" id="password1">
-                <label>Nueva Contraseña</label>
-                <input type="password" name="password" class="form-control" placeholder="Ingrese nueva contraseña">
+            <div class="col-md-6">
+                    <label>Nueva Contraseña</label>
+                    <div class="divPassword">
+                <input type="password" class="form-control" name="password" id="password"
+                   placeholder="Ingresa tu contraseña">
+                    <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword"/>
             </div>
-            <div class="col-md-6 d-none" id="password2">
-                <label>Reingresar contraseña</label>
-                <input type="password" name="password2" class="form-control"
-                       placeholder="Ingrese nuevamente su contraseña">
+                </div>
+
+                <div class="col-md-6">
+                    <label>Contraseña</label>
+                    <div class="divPassword">
+                <input type="password" class="form-control" name="password" id="password2"
+                   placeholder="Ingresa tu contraseña">
+                    <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword2"/>
             </div>
                 
             <button type="submit" class="btn btn-primary">Actualizar</button>
@@ -128,6 +135,7 @@
 
 <script src="../mostrarInputFile.js"></script>
 <script src="../mostrarPassword.js"></script>
+<script src="../vistaPassword.js"></script>
 
 
 
