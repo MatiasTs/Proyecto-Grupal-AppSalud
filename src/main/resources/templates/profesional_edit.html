@@ -147,23 +147,30 @@
             </div>
                 
             <div class="col-md-12 d-none" id="actualPassword">
-                <div class="col-md-6">
+                    
                     <label>Contraseña actual</label>
-                    <input type="password" name="actualPassword" class="form-control" placeholder="Ingrese contraseña actual">
-          
+                    <div class="col-md-6 divPassword">
+                        <input type="password" name="actualPassword" class="form-control" id="passwordActual" placeholder="Ingrese contraseña actual">
+                        <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword3"/>
+                    </div>
                 </div>
-            </div>
                 
                 
                 
-            <div class="col-md-6 d-none" id="password1">
+            <div class="col-md-6 d-none" id="passwordContainer1">
                 <label>Nueva Contraseña</label>
-                <input type="password" name="password" class="form-control" placeholder="Ingrese nueva contraseña">
+                <div class="divPassword">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese nueva contraseña">
+                <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword"/>
             </div>
-            <div class="col-md-6 d-none" id="password2">
+                </div>
+            <div class="col-md-6 d-none" id="passwordContainer2">
                 <label>Reingresar contraseña</label>
-                <input type="password" name="password2" class="form-control"
+                <div class="divPassword">
+                <input type="password" name="password2" id="password2" class="form-control"
                        placeholder="Ingrese nuevamente su contraseña">
+                    <img src="/images/mostrar.jpg" alt="Ver password" class="imagePassword" id="imagePassword2"/>
+            </div>
             </div>
 
             
@@ -182,5 +189,6 @@
 ></script>
 <script src="../mostrarInputFile.js"></script>
 <script src="../mostrarPassword.js"></script>
+<script src="../vistaPassword.js"></script>
 </body>
 </html>
